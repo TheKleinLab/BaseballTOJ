@@ -12,7 +12,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TOJ$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1417534133893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TOJ$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1417539446183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -28,11 +28,26 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="baseball_TOJ_schema.sql" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="baseball_TOJ_schema.sql" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ExpAssets/baseball_TOJ_schema.sql">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="4" column="24" selection-start="149" selection-end="149" vertical-scroll-proportion="0.06380368" vertical-offset="0" max-vertical-offset="815">
+                <state line="20" column="29" selection-start="548" selection-end="548" vertical-scroll-proportion="-10.4" vertical-offset="0" max-vertical-offset="520">
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="klibs.py" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/klibs.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="3440" column="49" selection-start="116543" selection-end="116543" vertical-scroll-proportion="0.60255384" vertical-offset="13857" max-vertical-offset="19474">
+                  <folding>
+                    <element signature="e#38007#39113#0" expanded="true" />
+                    <element signature="e#54695#57620#0" expanded="true" />
+                    <marker date="1417539944000" expanded="true" signature="87523:87572" placeholder="SELECT name ..sqlite_master..." />
+                    <marker date="1417539944000" expanded="true" signature="88307:88364" placeholder="SELECT `name..sqlite_master..." />
+                    <marker date="1417539944000" expanded="true" signature="89523:89580" placeholder="SELECT `name..sqlite_master..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -44,8 +59,14 @@
           <file leaf-file-name="experiment.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/experiment.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="318" column="64" selection-start="11722" selection-end="11722" vertical-scroll-proportion="0.7488095" vertical-offset="840" max-vertical-offset="2106">
-                  <folding />
+                <state line="199" column="114" selection-start="6749" selection-end="6749" vertical-scroll-proportion="0.31832543" vertical-offset="2028" max-vertical-offset="4407">
+                  <folding>
+                    <element signature="e#2529#5785#0" expanded="true" />
+                    <element signature="e#8143#9064#0" expanded="true" />
+                    <element signature="e#9112#10290#0" expanded="true" />
+                    <element signature="e#10338#10572#0" expanded="true" />
+                    <element signature="e#11327#13012#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -62,8 +83,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/klibs.py" />
         <option value="$PROJECT_DIR$/experiment.py" />
+        <option value="$PROJECT_DIR$/klibs.py" />
       </list>
     </option>
   </component>
@@ -98,7 +119,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -133,16 +153,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../dist/klibs/klibs" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -253,6 +274,9 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -274,9 +298,6 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -356,23 +377,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1414" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11535402" sideWeight="0.6707882" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15672235" sideWeight="0.6707882" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11455847" sideWeight="0.67001545" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15672235" sideWeight="0.67001545" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921174" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998455" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -399,36 +420,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="322" column="64" selection-start="11808" selection-end="11808" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5551">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ExpAssets/baseball_TOJ_schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="520">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment.py">
-      <provider selected="true" editor-type-id="text-editor">
         <state line="82" column="26" selection-start="2133" selection-end="2133" vertical-scroll-proportion="0.0" vertical-offset="1066" max-vertical-offset="5330">
+          <folding>
+            <element signature="e#2529#5785#0" expanded="true" />
+            <element signature="e#8143#9064#0" expanded="true" />
+            <element signature="e#9112#10290#0" expanded="true" />
+            <element signature="e#10338#10572#0" expanded="true" />
+            <element signature="e#11327#13012#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ExpAssets/baseball_TOJ_schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="29" selection-start="548" selection-end="548" vertical-scroll-proportion="-10.4" vertical-offset="0" max-vertical-offset="520">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="318" column="64" selection-start="11722" selection-end="11722" vertical-scroll-proportion="0.7488095" vertical-offset="840" max-vertical-offset="2106">
-          <folding />
+        <state line="199" column="114" selection-start="6749" selection-end="6749" vertical-scroll-proportion="0.31832543" vertical-offset="2028" max-vertical-offset="4407">
+          <folding>
+            <element signature="e#2529#5785#0" expanded="true" />
+            <element signature="e#8143#9064#0" expanded="true" />
+            <element signature="e#9112#10290#0" expanded="true" />
+            <element signature="e#10338#10572#0" expanded="true" />
+            <element signature="e#11327#13012#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ExpAssets/baseball_TOJ_schema.sql">
+    <entry file="file://$PROJECT_DIR$/klibs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="24" selection-start="149" selection-end="149" vertical-scroll-proportion="0.06380368" vertical-offset="0" max-vertical-offset="815">
-          <folding />
+        <state line="3440" column="49" selection-start="116543" selection-end="116543" vertical-scroll-proportion="0.60255384" vertical-offset="13857" max-vertical-offset="19474">
+          <folding>
+            <element signature="e#38007#39113#0" expanded="true" />
+            <element signature="e#54695#57620#0" expanded="true" />
+            <marker date="1417539944000" expanded="true" signature="87523:87572" placeholder="SELECT name ..sqlite_master..." />
+            <marker date="1417539944000" expanded="true" signature="88307:88364" placeholder="SELECT `name..sqlite_master..." />
+            <marker date="1417539944000" expanded="true" signature="89523:89580" placeholder="SELECT `name..sqlite_master..." />
+          </folding>
         </state>
       </provider>
     </entry>

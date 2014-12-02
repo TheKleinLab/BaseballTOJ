@@ -3438,7 +3438,7 @@ class TextLayer(object):
 		rendered_text[:, :, 2][bitmap_as_2d_array == 0] = bg_color[2]
 		rendered_text[:, :, 3][bitmap_as_2d_array == 0] = bg_color[3]
 
-		return NumpySurface(rendered_text.astype(dtype=numpy.uint8))
+		return NumpySurface(rendered_text.astype(numpy.uint8))
 
 	def add_font(self, font_name, font_extension="ttf", font_file_name=None):
 		"""
