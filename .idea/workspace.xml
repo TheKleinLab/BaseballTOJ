@@ -12,7 +12,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TOJ$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1417551376883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TOJ$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1417552261474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -28,26 +28,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="baseball_TOJ_schema.sql" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="baseball_TOJ_schema.sql" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ExpAssets/baseball_TOJ_schema.sql">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="29" selection-start="548" selection-end="548" vertical-scroll-proportion="-10.4" vertical-offset="0" max-vertical-offset="520">
+                <state line="20" column="29" selection-start="548" selection-end="548" vertical-scroll-proportion="0.31941032" vertical-offset="0" max-vertical-offset="814">
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="klibs.py" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/klibs.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="3440" column="49" selection-start="116543" selection-end="116543" vertical-scroll-proportion="0.9140436" vertical-offset="13857" max-vertical-offset="19474">
-                  <folding>
-                    <element signature="e#38007#39113#0" expanded="true" />
-                    <element signature="e#54695#57620#0" expanded="true" />
-                    <marker date="1417539944000" expanded="true" signature="87523:87572" placeholder="SELECT name ..sqlite_master..." />
-                    <marker date="1417539944000" expanded="true" signature="88307:88364" placeholder="SELECT `name..sqlite_master..." />
-                    <marker date="1417539944000" expanded="true" signature="89523:89580" placeholder="SELECT `name..sqlite_master..." />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -59,15 +44,27 @@
           <file leaf-file-name="experiment.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/experiment.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="354" column="0" selection-start="13199" selection-end="13199" vertical-scroll-proportion="0.75446963" vertical-offset="3696" max-vertical-offset="4784">
+                <state line="184" column="0" selection-start="5931" selection-end="5931" vertical-scroll-proportion="0.4338498" vertical-offset="2028" max-vertical-offset="4823">
                   <folding>
                     <element signature="e#20#32#0" expanded="true" />
+                    <element signature="e#2466#2507#0" expanded="true" />
                     <element signature="e#2529#5785#0" expanded="true" />
-                    <element signature="e#5818#8072#0" expanded="true" />
-                    <element signature="e#8157#9078#0" expanded="true" />
-                    <element signature="e#9126#10134#0" expanded="true" />
-                    <element signature="e#10182#10416#0" expanded="true" />
-                    <element signature="e#11171#12856#0" expanded="true" />
+                    <element signature="e#8217#9138#0" expanded="true" />
+                    <element signature="e#9186#10194#0" expanded="true" />
+                    <element signature="e#10242#10476#0" expanded="true" />
+                    <element signature="e#11231#12916#0" expanded="true" />
+                    <element signature="e#13246#14259#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file:///usr/local/lib/python2.7/site-packages/klibs/app.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="241" column="23" selection-start="7556" selection-end="7556" vertical-scroll-proportion="0.0" vertical-offset="501" max-vertical-offset="3809">
+                  <folding>
+                    <element signature="e#10303#13228#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -386,8 +383,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11455847" sideWeight="0.67001545" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15672235" sideWeight="0.67001545" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11455847" sideWeight="0.67001545" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15672235" sideWeight="0.67001545" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -425,47 +422,45 @@
         <state line="82" column="26" selection-start="2133" selection-end="2133" vertical-scroll-proportion="0.0" vertical-offset="1066" max-vertical-offset="5330">
           <folding>
             <element signature="e#20#32#0" expanded="true" />
+            <element signature="e#2466#2507#0" expanded="true" />
             <element signature="e#2529#5785#0" expanded="true" />
-            <element signature="e#5818#8072#0" expanded="true" />
-            <element signature="e#8157#9078#0" expanded="true" />
-            <element signature="e#9126#10134#0" expanded="true" />
-            <element signature="e#10182#10416#0" expanded="true" />
-            <element signature="e#11171#12856#0" expanded="true" />
+            <element signature="e#8217#9138#0" expanded="true" />
+            <element signature="e#9186#10194#0" expanded="true" />
+            <element signature="e#10242#10476#0" expanded="true" />
+            <element signature="e#11231#12916#0" expanded="true" />
+            <element signature="e#13246#14259#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ExpAssets/baseball_TOJ_schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="29" selection-start="548" selection-end="548" vertical-scroll-proportion="-10.4" vertical-offset="0" max-vertical-offset="520">
+        <state line="20" column="29" selection-start="548" selection-end="548" vertical-scroll-proportion="0.31941032" vertical-offset="0" max-vertical-offset="814">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/klibs.py">
+    <entry file="file:///usr/local/lib/python2.7/site-packages/klibs/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3440" column="49" selection-start="116543" selection-end="116543" vertical-scroll-proportion="0.9140436" vertical-offset="13857" max-vertical-offset="19474">
+        <state line="241" column="23" selection-start="7556" selection-end="7556" vertical-scroll-proportion="0.0" vertical-offset="501" max-vertical-offset="3809">
           <folding>
-            <element signature="e#38007#39113#0" expanded="true" />
-            <element signature="e#54695#57620#0" expanded="true" />
-            <marker date="1417539944000" expanded="true" signature="87523:87572" placeholder="SELECT name ..sqlite_master..." />
-            <marker date="1417539944000" expanded="true" signature="88307:88364" placeholder="SELECT `name..sqlite_master..." />
-            <marker date="1417539944000" expanded="true" signature="89523:89580" placeholder="SELECT `name..sqlite_master..." />
+            <element signature="e#10303#13228#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="354" column="0" selection-start="13199" selection-end="13199" vertical-scroll-proportion="0.75446963" vertical-offset="3696" max-vertical-offset="4784">
+        <state line="184" column="0" selection-start="5931" selection-end="5931" vertical-scroll-proportion="0.4338498" vertical-offset="2028" max-vertical-offset="4823">
           <folding>
             <element signature="e#20#32#0" expanded="true" />
+            <element signature="e#2466#2507#0" expanded="true" />
             <element signature="e#2529#5785#0" expanded="true" />
-            <element signature="e#5818#8072#0" expanded="true" />
-            <element signature="e#8157#9078#0" expanded="true" />
-            <element signature="e#9126#10134#0" expanded="true" />
-            <element signature="e#10182#10416#0" expanded="true" />
-            <element signature="e#11171#12856#0" expanded="true" />
+            <element signature="e#8217#9138#0" expanded="true" />
+            <element signature="e#9186#10194#0" expanded="true" />
+            <element signature="e#10242#10476#0" expanded="true" />
+            <element signature="e#11231#12916#0" expanded="true" />
+            <element signature="e#13246#14259#0" expanded="true" />
           </folding>
         </state>
       </provider>

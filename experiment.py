@@ -183,11 +183,13 @@ class RSVP(klibs.App):
 		if self.last_likely_probe is None:
 			self.last_likely_probe = BASE if Params.version == GLOVE_LIKELY else GLOVE
 
-		if self.last_likely_probe == BASE_LIKELY:
+		if self.last_likely_probe == BASE:
+			self.last_likely_probe = GLOVE
 			self.probe_distribution = Params.exp_meta_factors['probe_target_distribution'][1]
 			likely_location = GLOVE
 			unlikely_location = BASE
 		else:
+			self.last_likely_probe = BASE
 			self.probe_distribution = Params.exp_meta_factors['probe_target_distribution'][0]
 			likely_location = BASE
 			unlikely_location = GLOVE
