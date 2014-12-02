@@ -352,7 +352,7 @@ class RSVP(klibs.App):
 
 	def get_color_response(self):
 		self.clear()
-		sdl2.mouse.SDL_WarpMouseGlobal(Params.screen_c[0], Params.screen_c[1])
+		# sdl2.mouse.SDL_WarpMouseGlobal(Params.screen_c[0], Params.screen_c[1])
 		sdl2.mouse.SDL_ShowCursor(sdl2.SDL_ENABLE)
 		sdl2.SDL_PumpEvents()
 		start = time.time()
