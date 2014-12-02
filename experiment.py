@@ -204,7 +204,7 @@ class RSVP(klibs.App):
 			self.probe_trials[i] = self.probe_locations[self.probe_trials[i]]
 
 		self.clear()
-		blocks_remaining_str = "Block {0} of {1}".format(block_num, Params.blocks)
+		blocks_remaining_str = "Block {0} of {1}".format(block_num, Params.blocks_per_experiment)
 		self.message(blocks_remaining_str, location=[Params.screen_c[0], 50], registration=5)
 		locations = [(Params.screen_c[0], (Params.screen_c[1] // 1.1) - 50),
 					(Params.screen_c[0], (Params.screen_c[1] // 1.1)),
@@ -245,7 +245,7 @@ class RSVP(klibs.App):
 			self.db.init_entry('trials')
 			self.clear()
 			self.message("Press spacebar to begin trial.", location="center", font_size=48)
-			self.listen(klibs.MAX_WAIT, "block_start")
+			self.listen(klibs.MAX_WAIT, "trial_start")
 
 	def trial(self, trial_factors, trial_num):
 		print time.time() - self.since_last_trial
