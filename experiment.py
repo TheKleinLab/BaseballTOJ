@@ -184,13 +184,13 @@ class RSVP(klibs.App):
 			self.last_likely_probe = BASE if Params.version == GLOVE_LIKELY else GLOVE
 
 		if self.last_likely_probe == BASE_LIKELY:
-			self.probe_distribution = Params.exp_meta_factors['probe_target_distribution'][0]
-			likely_location = BASE
-			unlikely_location = GLOVE
-		else:
 			self.probe_distribution = Params.exp_meta_factors['probe_target_distribution'][1]
 			likely_location = GLOVE
 			unlikely_location = BASE
+		else:
+			self.probe_distribution = Params.exp_meta_factors['probe_target_distribution'][0]
+			likely_location = BASE
+			unlikely_location = GLOVE
 
 		probe_target_cond_count = len(Params.exp_factors["probe_targets"])
 		toj_cond_count = Params.exp_factors["probe_targets"].count(TOJ)
@@ -248,11 +248,7 @@ class RSVP(klibs.App):
 			self.listen(klibs.MAX_WAIT, "trial_start")
 
 	def trial(self, trial_factors, trial_num):
-		print time.time() - self.since_last_trial
 		self.since_last_trial = time.time()
-		# if trial_factors[2] != TOJ:  # ie. if this is a probe trial because a location is specified
-		# 	self.probe_trial_count += 1
-
 		self.play_video(trial_factors[1], trial_factors[3], trial_factors[2])
 
 		if trial_factors[2] == TOJ:
