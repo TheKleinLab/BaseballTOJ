@@ -134,7 +134,7 @@ class RSVP(klibs.App):
 			frames = 1.0 * (522 - self.scene_frames_cut)
 			percent = int((x / frames) * 100)
 			msg_str = "Loading... ({0}%)"
-			funny_mode = False
+			funny_mode = True
 			if funny_mode:
 				if percent < 25:
 					msg_str = "Loading science... ({0}%)"
@@ -215,9 +215,9 @@ class RSVP(klibs.App):
 		distribution_strings = ["During the next block of trials, the colored disk will appear more frequently at the:",
 								"and less likely at the:"]
 		self.message(distribution_strings[0], location=locations[0], registration=5)
-		self.message(unlikely_location, font_size=48, color=(20, 180, 220, 255), location=locations[1], registration=5)
+		self.message(likely_location, font_size=48, color=(20, 180, 220, 255), location=locations[1], registration=5)
 		self.message(distribution_strings[1], location=locations[2], registration=5)
-		self.message(likely_location, font_size=48, color=(20, 180, 220, 255), location=locations[3], registration=5)
+		self.message(unlikely_location, font_size=48, color=(20, 180, 220, 255), location=locations[3], registration=5)
 		self.message("Press j to start.", location=[Params.screen_c[0], Params.screen_y * 0.8], registration=5)
 		self.listen(klibs.MAX_WAIT, 'block_start')
 

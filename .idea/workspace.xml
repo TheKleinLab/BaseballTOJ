@@ -12,7 +12,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TOJ$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1417552261474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TOJ$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1417552766696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -44,16 +44,36 @@
           <file leaf-file-name="experiment.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/experiment.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="184" column="0" selection-start="5931" selection-end="5931" vertical-scroll-proportion="0.4338498" vertical-offset="2028" max-vertical-offset="4823">
+                <state line="219" column="23" selection-start="7884" selection-end="7884" vertical-scroll-proportion="0.8283671" vertical-offset="2152" max-vertical-offset="4823">
                   <folding>
                     <element signature="e#20#32#0" expanded="true" />
                     <element signature="e#2466#2507#0" expanded="true" />
-                    <element signature="e#2529#5785#0" expanded="true" />
-                    <element signature="e#8217#9138#0" expanded="true" />
-                    <element signature="e#9186#10194#0" expanded="true" />
-                    <element signature="e#10242#10476#0" expanded="true" />
-                    <element signature="e#11231#12916#0" expanded="true" />
-                    <element signature="e#13246#14259#0" expanded="true" />
+                    <element signature="e#2529#5784#0" expanded="true" />
+                    <element signature="e#8216#9137#0" expanded="true" />
+                    <element signature="e#9185#10193#0" expanded="true" />
+                    <element signature="e#10241#10475#0" expanded="true" />
+                    <element signature="e#11230#12915#0" expanded="true" />
+                    <element signature="e#13245#14258#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="utility_functions.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file:///usr/local/lib/python2.7/site-packages/klibs/utility_functions.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="26" column="0" selection-start="961" selection-end="961" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="988">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="numpy_surface.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file:///usr/local/lib/python2.7/site-packages/klibs/numpy_surface.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="3" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1339">
+                  <folding>
+                    <element signature="e#13196#14331#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -62,9 +82,10 @@
           <file leaf-file-name="app.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file:///usr/local/lib/python2.7/site-packages/klibs/app.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="241" column="23" selection-start="7556" selection-end="7556" vertical-scroll-proportion="0.0" vertical-offset="501" max-vertical-offset="3809">
+                <state line="706" column="0" selection-start="25576" selection-end="25576" vertical-scroll-proportion="0.0" vertical-offset="3231" max-vertical-offset="4940">
                   <folding>
-                    <element signature="e#10303#13228#0" expanded="true" />
+                    <element signature="e#6508#9235#0" expanded="true" />
+                    <element signature="e#10297#13222#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -83,6 +104,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/klibs.py" />
+        <option value="/usr/local/lib/python2.7/site-packages/klibs/app.py" />
+        <option value="/usr/local/lib/python2.7/site-packages/klibs/numpy_surface.py" />
         <option value="$PROJECT_DIR$/experiment.py" />
       </list>
     </option>
@@ -407,7 +430,9 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ExpAssets/baseball_TOJ_schema.sql">
@@ -423,12 +448,12 @@
           <folding>
             <element signature="e#20#32#0" expanded="true" />
             <element signature="e#2466#2507#0" expanded="true" />
-            <element signature="e#2529#5785#0" expanded="true" />
-            <element signature="e#8217#9138#0" expanded="true" />
-            <element signature="e#9186#10194#0" expanded="true" />
-            <element signature="e#10242#10476#0" expanded="true" />
-            <element signature="e#11231#12916#0" expanded="true" />
-            <element signature="e#13246#14259#0" expanded="true" />
+            <element signature="e#2529#5784#0" expanded="true" />
+            <element signature="e#8216#9137#0" expanded="true" />
+            <element signature="e#9185#10193#0" expanded="true" />
+            <element signature="e#10241#10475#0" expanded="true" />
+            <element signature="e#11230#12915#0" expanded="true" />
+            <element signature="e#13245#14258#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -440,27 +465,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/lib/python2.7/site-packages/klibs/numpy_surface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1339">
+          <folding>
+            <element signature="e#13196#14331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/site-packages/klibs/utility_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="961" selection-end="961" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="988">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///usr/local/lib/python2.7/site-packages/klibs/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="241" column="23" selection-start="7556" selection-end="7556" vertical-scroll-proportion="0.0" vertical-offset="501" max-vertical-offset="3809">
+        <state line="706" column="0" selection-start="25576" selection-end="25576" vertical-scroll-proportion="0.0" vertical-offset="3231" max-vertical-offset="4940">
           <folding>
-            <element signature="e#10303#13228#0" expanded="true" />
+            <element signature="e#6508#9235#0" expanded="true" />
+            <element signature="e#10297#13222#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="0" selection-start="5931" selection-end="5931" vertical-scroll-proportion="0.4338498" vertical-offset="2028" max-vertical-offset="4823">
+        <state line="219" column="23" selection-start="7884" selection-end="7884" vertical-scroll-proportion="0.8283671" vertical-offset="2152" max-vertical-offset="4823">
           <folding>
             <element signature="e#20#32#0" expanded="true" />
             <element signature="e#2466#2507#0" expanded="true" />
-            <element signature="e#2529#5785#0" expanded="true" />
-            <element signature="e#8217#9138#0" expanded="true" />
-            <element signature="e#9186#10194#0" expanded="true" />
-            <element signature="e#10242#10476#0" expanded="true" />
-            <element signature="e#11231#12916#0" expanded="true" />
-            <element signature="e#13246#14259#0" expanded="true" />
+            <element signature="e#2529#5784#0" expanded="true" />
+            <element signature="e#8216#9137#0" expanded="true" />
+            <element signature="e#9185#10193#0" expanded="true" />
+            <element signature="e#10241#10475#0" expanded="true" />
+            <element signature="e#11230#12915#0" expanded="true" />
+            <element signature="e#13245#14258#0" expanded="true" />
           </folding>
         </state>
       </provider>
