@@ -23,7 +23,7 @@ GLOVE = "glove"
 BALL = "ball"
 RUNNER = "runner"
 GLOVE_LIKELY = "glove_likely"
-BALL_LIKELY = "ball_likely"
+BASE_LIKELY = "base_likely"
 key_maps = {}
 
 Params.collect_demographics = False
@@ -183,7 +183,7 @@ class RSVP(klibs.App):
 		if self.last_likely_probe is None:
 			self.last_likely_probe = BASE if Params.version == GLOVE_LIKELY else GLOVE
 
-		if self.last_likely_probe == GLOVE_LIKELY:
+		if self.last_likely_probe == BASE_LIKELY:
 			self.probe_distribution = Params.exp_meta_factors['probe_target_distribution'][0]
 			likely_location = BASE
 			unlikely_location = GLOVE
@@ -413,5 +413,5 @@ class RSVP(klibs.App):
 		return klibs.NumpySurface(numpy.asarray(wheel))
 
 Params.version = GLOVE_LIKELY
-#Params.version = BALL_LIKELY
+#Params.version = BASE_LIKELY
 app = RSVP('baseball_TOJ').run()
