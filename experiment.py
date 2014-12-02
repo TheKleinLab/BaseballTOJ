@@ -250,8 +250,8 @@ class RSVP(klibs.App):
 	def trial(self, trial_factors, trial_num):
 		print time.time() - self.since_last_trial
 		self.since_last_trial = time.time()
-		if trial_factors[2] != TOJ:  # ie. if this is a probe trial because a location is specified
-			self.probe_trial_count += 1
+		# if trial_factors[2] != TOJ:  # ie. if this is a probe trial because a location is specified
+		# 	self.probe_trial_count += 1
 
 		self.play_video(trial_factors[1], trial_factors[3], trial_factors[2])
 
