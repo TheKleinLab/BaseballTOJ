@@ -30,7 +30,7 @@ Params.collect_demographics = True
 Params.practicing = False
 Params.eye_tracking = False
 Params.instructions = False
-Params.blocks_per_experiment = 1
+Params.blocks_per_experiment = 4
 Params.trials_per_block = 120
 Params.practice_blocks = 0
 Params.trials_per_practice_block = 0
@@ -418,4 +418,4 @@ class RSVP(klibs.App):
 
 Params.version = GLOVE_LIKELY
 #Params.version = BALL_LIKELY
-app = RSVP('baseball_TOJ').db.export()
+app = RSVP('baseball_TOJ').run()

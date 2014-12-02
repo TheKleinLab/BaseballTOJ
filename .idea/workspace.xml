@@ -12,7 +12,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TOJ$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1417530867245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TOJ$experiment.coverage" NAME="experiment Coverage Results" MODIFIED="1417531432032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -316,14 +316,13 @@
           <file leaf-file-name="experiment.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/experiment.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="50" column="20" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.59117997" vertical-offset="11" max-vertical-offset="4459">
+                <state line="322" column="64" selection-start="11808" selection-end="11808" vertical-scroll-proportion="0.24076281" vertical-offset="3620" max-vertical-offset="4459">
                   <folding>
                     <element signature="e#2528#5674#0" expanded="true" />
                     <element signature="e#5707#8144#0" expanded="true" />
                     <element signature="e#8229#9150#0" expanded="true" />
                     <element signature="e#9198#10376#0" expanded="true" />
                     <element signature="e#10424#10658#0" expanded="true" />
-                    <element signature="e#11413#13097#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -635,7 +634,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="2560" height="1414" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -646,7 +645,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998455" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998455" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -955,7 +954,6 @@
             <element signature="e#8229#9150#0" expanded="true" />
             <element signature="e#9198#10376#0" expanded="true" />
             <element signature="e#10424#10658#0" expanded="true" />
-            <element signature="e#11413#13097#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1509,14 +1507,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="20" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.59117997" vertical-offset="11" max-vertical-offset="4459">
+        <state line="322" column="64" selection-start="11808" selection-end="11808" vertical-scroll-proportion="0.24076281" vertical-offset="3620" max-vertical-offset="4459">
           <folding>
             <element signature="e#2528#5674#0" expanded="true" />
             <element signature="e#5707#8144#0" expanded="true" />
             <element signature="e#8229#9150#0" expanded="true" />
             <element signature="e#9198#10376#0" expanded="true" />
             <element signature="e#10424#10658#0" expanded="true" />
-            <element signature="e#11413#13097#0" expanded="true" />
           </folding>
         </state>
       </provider>
