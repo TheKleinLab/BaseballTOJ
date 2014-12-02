@@ -26,7 +26,7 @@ GLOVE_LIKELY = "glove_likely"
 BALL_LIKELY = "ball_likely"
 key_maps = {}
 
-Params.collect_demographics = True
+Params.collect_demographics = False
 Params.practicing = False
 Params.eye_tracking = False
 Params.instructions = False
@@ -125,7 +125,8 @@ class RSVP(klibs.App):
 		self.glove_mask = klibs.NumpySurface(os.path.join(Params.asset_path, "glove_mask.png"))
 		self.contact_frame = self.contact_frame_pre_cut - self.scene_frames_cut
 		Params.key_maps["toj"] = klibs.KeyMap("toj", ["s", "o"], [sdl2.SDLK_s, sdl2.SDLK_o], ["safe", "out"])
-		Params.key_maps["trial_start"] = klibs.KeyMap("trial_start", ["j"], [sdl2.SDLK_j], ["j"])
+		Params.key_maps["trial_start"] = klibs.KeyMap("trial_start", ["spacebar"], [sdl2.SDLK_SPACE], ["spacebar"])
+		Params.key_maps["block_start"] = klibs.KeyMap("block_start", ["j"], [sdl2.SDLK_j], ["j"])
 
 		for x in range(1, 522 - self.scene_frames_cut):
 			sdl2.SDL_PumpEvents()
@@ -181,33 +182,27 @@ class RSVP(klibs.App):
 	def block(self, block_num):
 		if self.last_likely_probe is None:
 			self.last_likely_probe = BASE if Params.version == GLOVE_LIKELY else GLOVE
+
 		if self.last_likely_probe == GLOVE_LIKELY:
 			self.probe_distribution = Params.exp_meta_factors['probe_target_distribution'][0]
-			likely_location = self.probe_distribution[0]
-			unlikely_location = self.probe_distribution[1]
+			likely_location = BASE
+			unlikely_location = GLOVE
 		else:
 			self.probe_distribution = Params.exp_meta_factors['probe_target_distribution'][1]
-			likely_location = self.probe_distribution[1]
-			unlikely_location = self.probe_distribution[0]
+			likely_location = GLOVE
+			unlikely_location = BASE
 
-		# next two lines are Params.trials_per_block // 3 because only 1/3 of trials are probe trials
 		probe_target_cond_count = len(Params.exp_factors["probe_targets"])
 		toj_cond_count = Params.exp_factors["probe_targets"].count(TOJ)
 		probe_cond_count = probe_target_cond_count - toj_cond_count
 		probe_trial_ratio = probe_target_cond_count // probe_cond_count
 		glove_trials = int((Params.trials_per_block // probe_trial_ratio) * self.probe_distribution[GLOVE]) * [GLOVE]
 		base_trials = int((Params.trials_per_block // probe_trial_ratio) * self.probe_distribution[BASE]) * [BASE]
-
-		print len(glove_trials)
-		print glove_trials
-		print len(base_trials)
-		print base_trials
-
-		self.probe_trial_count = 0
 		self.probe_trials = glove_trials + base_trials
 		random.shuffle(self.probe_trials)
 		for i in range(0, len(self.probe_trials)):
 			self.probe_trials[i] = self.probe_locations[self.probe_trials[i]]
+
 		self.clear()
 		blocks_remaining_str = "Block {0} of {1}".format(block_num, Params.blocks)
 		self.message(blocks_remaining_str, location=[Params.screen_c[0], 50], registration=5)
@@ -221,7 +216,8 @@ class RSVP(klibs.App):
 		self.message(unlikely_location, font_size=48, color=(20, 180, 220, 255), location=locations[1], registration=5)
 		self.message(distribution_strings[1], location=locations[2], registration=5)
 		self.message(likely_location, font_size=48, color=(20, 180, 220, 255), location=locations[3], registration=5)
-		self.listen(klibs.MAX_WAIT, 'trial_start')
+		self.message("Press j to start.", location=[Params.screen_c[0], Params.screen_y * 0.8], registration=5)
+		self.listen(klibs.MAX_WAIT, 'block_start')
 
 	def flip_callback(self):
 		return True
@@ -249,7 +245,7 @@ class RSVP(klibs.App):
 			self.db.init_entry('trials')
 			self.clear()
 			self.message("Press spacebar to begin trial.", location="center", font_size=48)
-			self.listen(klibs.MAX_WAIT, "trial_start")
+			self.listen(klibs.MAX_WAIT, "block_start")
 
 	def trial(self, trial_factors, trial_num):
 		print time.time() - self.since_last_trial
@@ -344,7 +340,7 @@ class RSVP(klibs.App):
 				self.blit(ball_frame, position=(self.ball_x, self.ball_y))
 				ball_frames_shown += 1
 
-			if frame in self.probe_frames and probe_condition != NA:
+			if frame in self.probe_frames and probe_condition != TOJ:
 				self.blit(self.probe, 7, self.probe_location)
 
 			if frame == rt_start_frame:
