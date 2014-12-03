@@ -14,6 +14,16 @@ from copy import copy
 
 PI = math.pi
 
+NA = "NA"
+TOJ = "toj"
+BASE = "base"
+GLOVE = "glove"
+BALL = "ball"
+RUNNER = "runner"
+GLOVE_LIKELY = "glove_likely"
+BASE_LIKELY = "base_likely"
+key_maps = {}
+
 Params.version = GLOVE_LIKELY
 #Params.version = BASE_LIKELY
 
@@ -26,15 +36,7 @@ else:
 	Params.screen_x = 1920
 	Params.screen_y = 1200
 
-NA = "NA"
-TOJ = "toj"
-BASE = "base"
-GLOVE = "glove"
-BALL = "ball"
-RUNNER = "runner"
-GLOVE_LIKELY = "glove_likely"
-BASE_LIKELY = "base_likely"
-key_maps = {}
+
 
 Params.collect_demographics = False
 Params.practicing = False
@@ -186,10 +188,10 @@ class RSVP(klibs.App):
 		if Params.instructions:
 			self.instructions()
 
-		if Params.eye_tracking:
-			self.el.trackerInit()
-			self.el.setup()
-			Params.practicing = False
+		# if Params.eye_tracking:
+		# 	self.el.trackerInit()
+		# 	self.el.setup()
+		# 	Params.practicing = False
 
 	def block(self, block_num):
 		if self.last_likely_probe is None:
@@ -334,7 +336,13 @@ class RSVP(klibs.App):
 
 		self.probe_location = NA if probe_condition == TOJ else self.probe_trials.pop()
 		if self.probe_location != NA:
-			self.probe_location
+			if self.probe_location == self.probe_locations[BASE]:
+				self.probe_location_name = BASE
+			else:
+				self.probe_location_name = GLOVE
+		else:
+			self.probe_location_name = NA
+
 		for frame in range(scene_start_frame, scene_last_frame):
 			sdl2.SDL_PumpEvents()
 			sdl2.mouse.SDL_ShowCursor(sdl2.SDL_DISABLE)
