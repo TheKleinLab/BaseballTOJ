@@ -13,8 +13,18 @@ import random
 from copy import copy
 
 PI = math.pi
-Params.screen_x = 2560
-Params.screen_y = 1440
+
+Params.version = GLOVE_LIKELY
+#Params.version = BASE_LIKELY
+
+Params.big_screen = True
+
+if Params.big_screen:
+	Params.screen_x = 2560
+	Params.screen_y = 1440
+else:
+	Params.screen_x = 1920
+	Params.screen_y = 1200
 
 NA = "NA"
 TOJ = "toj"
@@ -105,10 +115,12 @@ class RSVP(klibs.App):
 			self.probe_locations[BASE][0] += x_offset
 			self.probe_locations[GLOVE][0] += x_offset
 			self.ball_vanish_line += x_offset
+			self.ball_initial_x = x_offset + 1024 + 20  # 20 = width of ball image
 		if Params.screen_y > 768:
 			y_offset = int((Params.screen_y - 768) // 2)
 			self.probe_locations[BASE][1] += y_offset
 			self.probe_locations[GLOVE][1] += y_offset
+			self.ball_initial_y = y_offset + 259
 
 		self.scene_path = os.path.join(Params.asset_path, 'JPG')
 		self.ball_frames_path = os.path.join(Params.asset_path, 'rendered_ball_blur')
@@ -268,7 +280,7 @@ class RSVP(klibs.App):
 			"probed_trial": "true" if trial_factors[2] != TOJ else "false",
 			"glove_probe_dist": self.probe_distribution[GLOVE],
 			"base_probe_dist": self.probe_distribution[BASE],
-			"probe_location": self.probe_location,
+			"probe_location": self.probe_location_name,
 			"probe_color": str(self.probe_color)[0:-6] + ")" if self.probe_color != NA else NA,
 			"color_response": str(self.color_response)[0:-6] + ")" if self.color_response != NA else NA,
 			"color_diff": self.color_diff,
@@ -321,6 +333,8 @@ class RSVP(klibs.App):
 		ball_frames_shown = 0
 
 		self.probe_location = NA if probe_condition == TOJ else self.probe_trials.pop()
+		if self.probe_location != NA:
+			self.probe_location
 		for frame in range(scene_start_frame, scene_last_frame):
 			sdl2.SDL_PumpEvents()
 			sdl2.mouse.SDL_ShowCursor(sdl2.SDL_DISABLE)
@@ -343,7 +357,7 @@ class RSVP(klibs.App):
 
 			if frame == rt_start_frame:
 				self.rt_start = time.time()
-
+				
 			self.flip()
 
 	def get_toj_response(self):
@@ -410,6 +424,5 @@ class RSVP(klibs.App):
 		# print numpy.asarray(wheel.tostring())
 		return klibs.NumpySurface(numpy.asarray(wheel))
 
-Params.version = GLOVE_LIKELY
-#Params.version = BASE_LIKELY
+
 app = RSVP('baseball_TOJ').run()
