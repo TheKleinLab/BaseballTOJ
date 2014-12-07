@@ -389,13 +389,15 @@ class RSVP(klibs.App):
 					pos = [event.button.x, event.button.y]
 					pos[0] -= int((Params.screen_x - self.wheel.width) / 2)
 					pos[1] -= int((Params.screen_y - self.wheel.height) / 2)
-					clicked_px_color = self.wheel.get_pixel_value(pos).tolist()
-					color_choice = (clicked_px_color[0], clicked_px_color[1], clicked_px_color[2], 255)
-					if color_choice in self.color_list:
-						self.color_response = str(color_choice)
-						probe_index = self.color_list.index(self.probe_color)
-						click_index = self.color_list.index(color_choice)
-						self.color_diff = probe_index - click_index
+					clicked_px_color = self.wheel.get_pixel_value(pos)
+					if type(clicked_px_color) is not bool:
+						clicked_px_color = clicked_px_color.tolist()
+						color_choice = (clicked_px_color[0], clicked_px_color[1], clicked_px_color[2], 255)
+						if color_choice in self.color_list:
+							self.color_response = str(color_choice)
+							probe_index = self.color_list.index(self.probe_color)
+							click_index = self.color_list.index(color_choice)
+							self.color_diff = probe_index - click_index
 		sdl2.mouse.SDL_ShowCursor(sdl2.SDL_DISABLE)
 
 	def probe_surface(self):
@@ -433,4 +435,5 @@ class RSVP(klibs.App):
 		return klibs.NumpySurface(numpy.asarray(wheel))
 
 
-app = RSVP('baseball_TOJ').run()
+#app = RSVP('baseball_TOJ').run()
+app = RSVP('baseball_TOJ').db.export()

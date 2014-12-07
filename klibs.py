@@ -2911,12 +2911,23 @@ class Database(object):
 		# todo: write stuff for joining tables
 		# todo: add behaviors for how to deal with multiple files with the same participant id (ie. append, overwrite, etc.)
 		participants = self.query("SELECT * FROM `participants`").fetchall()
-		table_header = self.table_headers("trials", [["participants", 1, ['userhash']]], True)
-		# table_header = self.table_headers("trials", as_string=True)
+		table_header = self.table_headers("trials", [["participants", 1, ['userhash']]], False)
+		table_header.insert(0, "trial_num")
+		table_header.insert(6, "tie_run_rule")
+		table_header.insert(7, "tie_run_use")
+		table_header = "{0}\n".format("\t ".join(table_header))
 		for p in participants:
-			block_num = 1
-			trials_this_block = 0
-			trials = self.query("SELECT * FROM `trials` WHERE `participant_id` = {0}".format(p[0])).fetchall()
+			trials = self.query("SELECT `trials`.`trial_num`, `trials`.`participant_id`, `participants`.`gender`, "
+							  "`participants`.`age`, `participants`.`handedness`, `participants`.`created`,"
+							  "`surveys`.`tie_run_familiar`, `surveys`.`tie_run_used`,`trials`.`block_num`, `trials`.`soa`, "
+							  "`trials`.`baserun_offset`, `trials`.`first_arrival`, `trials`.`probed_trial`, "
+							  "`trials`.`glove_probe_dist`, `trials`.`base_probe_dist`, `trials`.`probe_location`, "
+							  "`trials`.`probe_color`, `trials`.`color_response`, `trials`.`color_diff`, "
+							  "`trials`.`toj_response`, `trials`.`response_time` FROM `trials` "
+							  "JOIN `participants` ON `participants`.	`id` = `trials`.`participant_id` "
+							  "JOIN `surveys` ON `surveys`.`participant_id` = `trials`.`participant_id` "
+							  "WHERE `trials`. `participant_id` = {0}".format(p[0])).fetchall()
+			# table_header = self.table_headers("trials", as_string=True)
 			file_name_str = "p{0}_{1}.txt"
 			duplicate_file_name_str = "p{0}.{1}_{2}.txt"
 			file_path = Params.data_path
@@ -2937,14 +2948,15 @@ class Database(object):
 			participant_file = open(os.path.join(file_path, file_name), "w+")
 			participant_file.write(table_header)
 			for trial in trials:
-				trial = trial[1:]
-				if trials_this_block == 120:
-					block_num += 1
-					trials_this_block = 0
-				trials_this_block += 1
-				trial = list(trial)
-				trial[1:1] = p[2:]
-				trial[5] = block_num
+				# for trial in trials:
+				# 	trial = trial[1:]
+				# 	if trials_this_block == 120:
+				# 		block_num += 1
+				# 		trials_this_block = 0
+				# 	trials_this_block += 1
+				# 	trial = list(trial)
+				# 	trial[1:1] = p[2:]
+				# 	trial[5] = block_num
 				row_string = "\t".join([str(col) for col in trial])
 				participant_file.write("{0}\n".format(row_string))
 			participant_file.close()
