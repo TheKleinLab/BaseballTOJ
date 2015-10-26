@@ -1,6 +1,14 @@
-__author__ = 'jono'
+__author__ = "Jon Mulle"
+
 import klibs
+from klibs.KLExceptions import *
 from klibs import Params
+from klibs.KLUtilities import *
+from klibs.KLNumpySurface import NumpySurface
+import klibs.KLDraw as kld
+
+#  Below are some commonly required additional libraries; uncomment as needed.
+
 import os
 import time
 from PIL import Image
@@ -27,35 +35,24 @@ key_maps = {}
 Params.version = GLOVE_LIKELY
 #Params.version = BASE_LIKELY
 
-Params.big_screen = True
+Params.default_fill_color = (100, 100, 100, 255)  # TODO: rotate through seasons
 
-if Params.big_screen:
-	Params.screen_x = 2560
-	Params.screen_y = 1440
-else:
-	Params.screen_x = 1920
-	Params.screen_y = 1200
-
-
+Params.debug_level = 3
 
 Params.collect_demographics = False
 Params.practicing = False
-Params.eye_tracking = False
-Params.instructions = False
+Params.eye_tracking = True
+Params.eye_tracker_available = False
+
 Params.blocks_per_experiment = 4
 Params.trials_per_block = 120
 Params.practice_blocks = 0
 Params.trials_per_practice_block = 0
+
 Params.exp_meta_factors = {"probe_target_distribution": [{BASE: 0.8, GLOVE: 0.2}, {BASE: 0.2, GLOVE: 0.8}]}
 
-Params.exp_factors = {
-						"SOA": [15, 15, 15, 45, 45, 90, 90, 135, 135, 240],
-						"probe_targets": [BASE, GLOVE, TOJ, TOJ, TOJ, TOJ],
-						"condition": [RUNNER, BALL]
-}
 
-
-class RSVP(klibs.App):
+class BaseballTOJ(klibs.Experiment):
 	scene_frames_cut = 300
 	scene_path = None
 	ball_frames_path = None
@@ -108,7 +105,7 @@ class RSVP(klibs.App):
 	last_likely_probe = None
 
 	def __init__(self, *args, **kwargs):
-		klibs.App.__init__(self, *args, **kwargs)
+		super(BaseballTOJ, self).__init__(*args, **kwargs)
 
 	def setup(self):
 		self.since_last_trial = 0
@@ -124,8 +121,8 @@ class RSVP(klibs.App):
 			self.probe_locations[GLOVE][1] += y_offset
 			self.ball_initial_y = y_offset + 259
 
-		self.scene_path = os.path.join(Params.asset_path, 'JPG')
-		self.ball_frames_path = os.path.join(Params.asset_path, 'rendered_ball_blur')
+		self.scene_path = os.path.join(Params.asset_path, "image",'JPG')
+		self.ball_frames_path = os.path.join(Params.asset_path, "image",'rendered_ball_blur')
 		self.color_list = eval(open(os.path.join(Params.asset_path, "color_list.txt")).read())
 		self.wheel_diam = 8 * Params.ppd
 		self.wheel_dimensions = (self.wheel_diam, self.wheel_diam)
@@ -136,11 +133,11 @@ class RSVP(klibs.App):
 		self.post_arrival_buffer_frames = 19
 		self.ball_x = copy(self.ball_initial_x)
 		self.ball_y = copy(self.ball_initial_y)
-		self.glove_mask = klibs.NumpySurface(os.path.join(Params.asset_path, "glove_mask.png"))
+		self.glove_mask = klibs.NumpySurface(os.path.join(Params.asset_path,"image", "glove_mask.png"))
 		self.contact_frame = self.contact_frame_pre_cut - self.scene_frames_cut
-		Params.key_maps["toj"] = klibs.KeyMap("toj", ["s", "o"], [sdl2.SDLK_s, sdl2.SDLK_o], ["safe", "out"])
-		Params.key_maps["trial_start"] = klibs.KeyMap("trial_start", ["spacebar"], [sdl2.SDLK_SPACE], ["spacebar"])
-		Params.key_maps["block_start"] = klibs.KeyMap("block_start", ["j"], [sdl2.SDLK_j], ["j"])
+		Params.key_maps["toj"] = klibs.KeyMap("toj", ["s", "o"], ["safe", "out"], [sdl2.SDLK_s, sdl2.SDLK_o])
+		Params.key_maps["trial_start"] = klibs.KeyMap("trial_start", ["spacebar"], ["spacebar"], [sdl2.SDLK_SPACE])
+		Params.key_maps["block_start"] = klibs.KeyMap("block_start", ["j"], ["j"], [sdl2.SDLK_j])
 
 		for x in range(1, 522 - self.scene_frames_cut):
 			sdl2.SDL_PumpEvents()
@@ -162,7 +159,7 @@ class RSVP(klibs.App):
 						registration=5, flip=True)
 			x = str(int(x * 2) + (2 * self.scene_frames_cut)).zfill(8)
 			path = os.path.join(self.scene_path, "{0}.jpg".format(x))
-			surface = self.numpy_surface(path)
+			surface = klibs.NumpySurface(path)
 			surface.prerender()
 			self.scene_frames.append(surface)
 
@@ -181,17 +178,6 @@ class RSVP(klibs.App):
 			self.ball_frames.append(self.ball_frames[0: diff])
 		elif self.ball_frame_count < len(self.ball_frames):
 			self.ball_frames = self.ball_frames[0: self.ball_frame_count]
-
-		if Params.collect_demographics:
-			self.collect_demographics()
-
-		if Params.instructions:
-			self.instructions()
-
-		# if Params.eye_tracking:
-		# 	self.el.trackerInit()
-		# 	self.el.setup()
-		# 	Params.practicing = False
 
 	def block(self, block_num):
 		if self.last_likely_probe is None:
@@ -238,7 +224,7 @@ class RSVP(klibs.App):
 	def flip_callback(self):
 		return True
 
-	def trial_prep(self, *args, **kwargs):
+	def trial_prep(self, trial_factors):
 		random.shuffle(self.probe_trials)
 		self.wheel = self.wheel_surface(random.uniform(0, 360))
 		self.probe_color = random.choice(self.color_list)
@@ -251,19 +237,12 @@ class RSVP(klibs.App):
 			probe_start_frame = self.contact_frame - (self.probe_frame_count // 2)
 			self.probe_frames = range(probe_start_frame, probe_start_frame + self.probe_frame_count)
 
-		if Params.eye_tracking:
-			self.fill()
-			self.blit(Params.drift_target, 5, Params.screen_c)
-			self.flip()
-			self.el.el.doDriftCorrect(Params.screen_c[0], Params.screen_c[1], 0, 1)
-			self.el.el.acceptTrigger()
-		else:
-			self.db.init_entry('trials')
-			self.clear()
-			self.message("Press spacebar to begin trial.", location="center", font_size=48)
-			self.listen(klibs.MAX_WAIT, "trial_start")
+		self.db.init_entry('trials')
+		self.clear()
+		self.message("Press spacebar to begin trial.", location="center", font_size=48)
+		self.listen(klibs.MAX_WAIT, "trial_start")
 
-	def trial(self, trial_factors, trial_num):
+	def trial(self, trial_factors):
 		self.since_last_trial = time.time()
 		self.play_video(trial_factors[1], trial_factors[3], trial_factors[2])
 
@@ -274,8 +253,8 @@ class RSVP(klibs.App):
 			self.get_color_response()
 
 		return {
-			"block_num": self.block_number,
-			"trial_num": self.trial_number,
+			"block_num": Params.block_number,
+			"trial_num": Params.trial_number,
 			"soa": trial_factors[1],
 			"baserun_offset": self.baserun_offset * 15,  # number of extra frames runner is shown for at video start
 			"first_arrival": trial_factors[3],
@@ -301,21 +280,22 @@ class RSVP(klibs.App):
 		self.toj_response = NA
 
 	def clean_up(self):
-		self.db.init_entry("surveys", set_current=True)
-
-		tie_run_familiar_query = "Are you familiar with the baseball convention that states 'a tie goes to the runner'?"
-		tie_run_use_query = "Did you use this convention in make 'safe' or 'out' judgements during this experiment?"
-
-		tie_run_familiar_resp = self.query(tie_run_familiar_query, accepted=["y", "n"])
-		self.db.log('tie_run_familiar', tie_run_familiar_resp)
-
-		if tie_run_familiar_resp == "y":
-			self.db.log('tie_run_used', self.query(tie_run_use_query, accepted=["y", "n"]))
-		else:
-			self.db.log('tie_run_used', NA)
-		self.db.log(Params.id_field_name, self.participant_id)
-		self.db.insert()
-		return True
+		pass
+# 		self.db.init_entry("surveys", set_current=True)
+# 
+# 		tie_run_familiar_query = "Are you familiar with the baseball convention that states 'a tie goes to the runner'?"
+# 		tie_run_use_query = "Did you use this convention in make 'safe' or 'out' judgements during this experiment?"
+# 
+# 		tie_run_familiar_resp = self.query(tie_run_familiar_query, accepted=["y", "n"])
+# 		self.db.log('tie_run_familiar', tie_run_familiar_resp)
+# 
+# 		if tie_run_familiar_resp == "y":
+# 			self.db.log('tie_run_used', self.query(tie_run_use_query, accepted=["y", "n"]))
+# 		else:
+# 			self.db.log('tie_run_used', NA)
+# 		self.db.log(Params.id_field_name, self.participant_id)
+# 		self.db.insert()
+# 		return True
 
 	def play_video(self, soa, first_arrival, probe_condition):
 		self.fill()
@@ -433,7 +413,3 @@ class RSVP(klibs.App):
 		wheel = Image.frombytes(wheel.mode, wheel.size, wheel.tostring())
 		# print numpy.asarray(wheel.tostring())
 		return klibs.NumpySurface(numpy.asarray(wheel))
-
-
-#app = RSVP('baseball_TOJ').run()
-app = RSVP('baseball_TOJ').db.export()
