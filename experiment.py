@@ -95,6 +95,11 @@ class BaseballTOJ(klibs.Experiment):
 	probe_dimensions = (20, 20)  # px
 	probe_distribution = None
 
+	# these vars are set and removed each trial
+	since_last_trial = None
+	probe_color = None
+	probe_location = None
+	probe_location_name = None
 	response_timeout = 2  # seconds
 	color_diff = NA
 	color_response = NA
@@ -103,6 +108,7 @@ class BaseballTOJ(klibs.Experiment):
 	rt_start = None
 
 	last_likely_probe = None
+
 
 	def __init__(self, *args, **kwargs):
 		super(BaseballTOJ, self).__init__(*args, **kwargs)
@@ -124,7 +130,7 @@ class BaseballTOJ(klibs.Experiment):
 		self.scene_path = os.path.join(Params.asset_path, "image",'JPG')
 		self.ball_frames_path = os.path.join(Params.asset_path, "image",'rendered_ball_blur')
 		self.color_list = eval(open(os.path.join(Params.asset_path, "color_list.txt")).read())
-		self.wheel_diam = 8 * Params.ppd
+		self.wheel_diam = int(8 * Params.pixels_per_degree)
 		self.wheel_dimensions = (self.wheel_diam, self.wheel_diam)
 		self.wheel_rad = self.wheel_diam / 2
 		self.wheel_bounds = []
@@ -135,6 +141,7 @@ class BaseballTOJ(klibs.Experiment):
 		self.ball_y = copy(self.ball_initial_y)
 		self.glove_mask = klibs.NumpySurface(os.path.join(Params.asset_path,"image", "glove_mask.png"))
 		self.contact_frame = self.contact_frame_pre_cut - self.scene_frames_cut
+
 		Params.key_maps["toj"] = klibs.KeyMap("toj", ["s", "o"], ["safe", "out"], [sdl2.SDLK_s, sdl2.SDLK_o])
 		Params.key_maps["trial_start"] = klibs.KeyMap("trial_start", ["spacebar"], ["spacebar"], [sdl2.SDLK_SPACE])
 		Params.key_maps["block_start"] = klibs.KeyMap("block_start", ["j"], ["j"], [sdl2.SDLK_j])
@@ -194,16 +201,16 @@ class BaseballTOJ(klibs.Experiment):
 			likely_location = BASE
 			unlikely_location = GLOVE
 
-		probe_target_cond_count = len(Params.exp_factors["probe_targets"])
-		toj_cond_count = Params.exp_factors["probe_targets"].count(TOJ)
-		probe_cond_count = probe_target_cond_count - toj_cond_count
-		probe_trial_ratio = probe_target_cond_count // probe_cond_count
-		glove_trials = int((Params.trials_per_block // probe_trial_ratio) * self.probe_distribution[GLOVE]) * [GLOVE]
-		base_trials = int((Params.trials_per_block // probe_trial_ratio) * self.probe_distribution[BASE]) * [BASE]
-		self.probe_trials = glove_trials + base_trials
-		random.shuffle(self.probe_trials)
-		for i in range(0, len(self.probe_trials)):
-			self.probe_trials[i] = self.probe_locations[self.probe_trials[i]]
+		# probe_target_cond_count = len(Params.exp_factors["probe_targets"])
+		# toj_cond_count = Params.exp_factors["probe_targets"].count(TOJ)
+		# probe_cond_count = probe_target_cond_count - toj_cond_count
+		# probe_trial_ratio = probe_target_cond_count // probe_cond_count
+		# glove_trials = int((Params.trials_per_block // probe_trial_ratio) * self.probe_distribution[GLOVE]) * [GLOVE]
+		# base_trials = int((Params.trials_per_block // probe_trial_ratio) * self.probe_distribution[BASE]) * [BASE]
+		# self.probe_trials = glove_trials + base_trials
+		# random.shuffle(self.probe_trials)
+		# for i in range(0, len(self.probe_trials)):
+		# 	self.probe_trials[i] = self.probe_locations[self.probe_trials[i]]
 
 		self.clear()
 		blocks_remaining_str = "Block {0} of {1}".format(block_num, Params.blocks_per_experiment)
@@ -225,7 +232,6 @@ class BaseballTOJ(klibs.Experiment):
 		return True
 
 	def trial_prep(self, trial_factors):
-		random.shuffle(self.probe_trials)
 		self.wheel = self.wheel_surface(random.uniform(0, 360))
 		self.probe_color = random.choice(self.color_list)
 		self.probe = self.probe_surface()
@@ -237,14 +243,15 @@ class BaseballTOJ(klibs.Experiment):
 			probe_start_frame = self.contact_frame - (self.probe_frame_count // 2)
 			self.probe_frames = range(probe_start_frame, probe_start_frame + self.probe_frame_count)
 
-		self.db.init_entry('trials')
+		self.database.init_entry('trials')
 		self.clear()
 		self.message("Press spacebar to begin trial.", location="center", font_size=48)
 		self.listen(klibs.MAX_WAIT, "trial_start")
 
 	def trial(self, trial_factors):
+		print trial_factors
 		self.since_last_trial = time.time()
-		self.play_video(trial_factors[1], trial_factors[3], trial_factors[2])
+		self.play_video(*trial_factors[1:])
 
 		if trial_factors[2] == TOJ:
 			self.get_toj_response()
@@ -297,13 +304,12 @@ class BaseballTOJ(klibs.Experiment):
 # 		self.db.insert()
 # 		return True
 
-	def play_video(self, soa, first_arrival, probe_condition):
+	def play_video(self, soa, first_arrival, probe_condition, probe_location):
 		self.fill()
 		self.flip()
 		scene_start_frame = self.contact_frame - self.baserun_offset
-		soa_in_frames = int(soa / 15)
-		ball_first_frame = None
-		scene_last_frame = None
+		soa_in_frames = int(soa) // 15
+
 		if first_arrival == BALL:
 			ball_last_frame = self.contact_frame - soa_in_frames
 			scene_last_frame = self.contact_frame + self.post_arrival_buffer_frames
@@ -314,7 +320,8 @@ class BaseballTOJ(klibs.Experiment):
 		rt_start_frame = self.contact_frame if first_arrival == RUNNER else ball_last_frame
 		ball_frames_shown = 0
 
-		self.probe_location = NA if probe_condition == TOJ else self.probe_trials.pop()
+		self.probe_location = NA if probe_condition == TOJ else self.probe_locations[probe_location]
+
 		if self.probe_location != NA:
 			if self.probe_location == self.probe_locations[BASE]:
 				self.probe_location_name = BASE
@@ -329,7 +336,7 @@ class BaseballTOJ(klibs.Experiment):
 			self.fill()
 			self.blit(self.scene_frames[frame], 5, 'center')
 
-			if frame >= ball_first_frame and frame <= ball_last_frame:
+			if ball_last_frame >= frame >= ball_first_frame:
 				self.ball_x += self.ball_speed
 				ball_frame = copy(self.ball_frames[ball_frames_shown])
 				if self.ball_x < self.ball_vanish_line:
