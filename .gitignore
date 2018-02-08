@@ -1,3 +1,10 @@
-ExpAssets/Data*
-ExpAssets/baseball_TOJ.db
-ExpAssets/baseball_TOJ.db.backup
+**/*.pyc
+**/.*
+!.gitignore
+ExpAssets/*.db
+ExpAssets/*.db.backup
+ExpAssets/Data/**
+ExpAssets/EDF/**
+ExpAssets/.versions/**
+ExpAssets/Local
+ExpAssets/Local/**
