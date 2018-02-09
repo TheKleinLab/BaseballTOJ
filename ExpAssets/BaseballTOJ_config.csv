@@ -1,6 +1,0 @@
-soa.param,probe_targets.param,condition.param,probe_location.param,trial_count.param
-15[3],BASE,RUNNER,glove[8]
-45[2],GLOVE,BALL,base[2]
-90[2],TOJ[4]
-135[2]
-240
