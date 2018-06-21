@@ -22,7 +22,7 @@ Then, you can then download and install the experiment program with the followin
 
 ```
 cd ~/Downloads
-git clone https://github.com/TheKleinLab/BaseballTOJ.git
+git clone --depth 1 https://github.com/TheKleinLab/BaseballTOJ.git
 ```
 You will also need to install the [imageio](https://imageio.github.io) module, which you can do by running:
 
