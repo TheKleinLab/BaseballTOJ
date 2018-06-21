@@ -30,7 +30,7 @@ destroyed and rebuilt. If you wish to keep the data you currently have, run:
   klibs export
 
 while within the root of your project folder. This will export all participant and trial
-data in the database to text files found in WaldoReplication/ExpAssets/Data.
+data in the database to text files found in BaseballTOJ/ExpAssets/Data.
 
 
 Note that you *really* do not need to be concerned about datatypes when adding columns;
@@ -45,7 +45,7 @@ CREATE TABLE participants (
 	id integer primary key autoincrement not null,
 	userhash text not null,
 	random_seed text not null,
-	sex text not null,
+	gender text not null,
 	age integer not null, 
 	handedness text not null,
 	created text not null,
@@ -67,6 +67,7 @@ CREATE TABLE trials (
 	probe_color text not null,
 	color_response text not null,
 	color_diff text not null,
+	color_rt text not null,
 	toj_response text not null,
 	response_time text not null
 );
