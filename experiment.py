@@ -6,14 +6,15 @@ __author__ = "Jon Mulle"
 import klibs
 from klibs.KLExceptions import *
 from klibs import P
+from klibs.KLConstants import NO_RESPONSE
 from klibs.KLUtilities import *
 from klibs.KLKeyMap import KeyMap
-from klibs.KLUserInterface import any_key
+from klibs.KLUserInterface import any_key, ui_request
 from klibs.KLGraphics import fill, blit, flip, clear
 from klibs.KLGraphics.colorspaces import const_lum
 from klibs.KLGraphics.KLNumpySurface import NumpySurface
 import klibs.KLGraphics.KLDraw as kld
-from klibs.KLCommunication import message
+from klibs.KLCommunication import message, user_queries
 
 # Import additional required libraries
 
@@ -49,6 +50,7 @@ TIMEOUT = "timeout"
 
 
 P.exp_meta_factors = {"probe_target_distribution": [{BASE: 0.8, GLOVE: 0.2}, {BASE: 0.2, GLOVE: 0.8}]}
+P.key_maps = {}
 
 
 class BaseballTOJ(klibs.Experiment):
@@ -147,6 +149,10 @@ class BaseballTOJ(klibs.Experiment):
 		super(BaseballTOJ, self).__init__(*args, **kwargs)
 
 	def setup(self):
+
+		if P.screen_x != 2560 or P.screen_y != 1440:
+			print("WARNING: This version of BaseballTOJ will not run properly unless it is"
+				"run on a screen with a resolution of 2560x1440.\n")
 		
 		self.txtm.add_style("large", 48)
 		self.txtm.add_style("loc", 48, color=LIGHT_BLUE)
@@ -333,22 +339,18 @@ class BaseballTOJ(klibs.Experiment):
 		self.toj_response = NA
 
 	def clean_up(self):
-		pass
-#		self.db.init_entry("surveys", set_current=True)
-# 
-#		tie_run_familiar_query = "Are you familiar with the baseball convention that states 'a tie goes to the runner'?"
-#		tie_run_use_query = "Did you use this convention in make 'safe' or 'out' judgements during this experiment?"
-# 
-#		tie_run_familiar_resp = self.query(tie_run_familiar_query, accepted=["y", "n"])
-#		self.db.log('tie_run_familiar', tie_run_familiar_resp)
-# 
-#		if tie_run_familiar_resp == "y":
-#			self.db.log('tie_run_used', self.query(tie_run_use_query, accepted=["y", "n"]))
-#		else:
-#			self.db.log('tie_run_used', NA)
-#		self.db.log(P.id_field_name, self.participant_id)
-#		self.db.insert()
-#		return True
+		self.db.init_entry("surveys", set_current=True)
+		self.db.log('participant_id', P.participant_id)
+		
+		tie_run_familiar_resp = user_queries.experimental[0]
+		self.db.log('tie_run_familiar', tie_run_familiar_resp)
+		
+		if tie_run_familiar_resp == "y":
+			self.db.log('tie_run_used', user_queries.experimental[1])
+		else:
+			self.db.log('tie_run_used', NA)
+		self.db.insert()
+
 
 	def play_video(self, soa, first_arrival, probe_condition, probe_location):
 		fill()
@@ -390,7 +392,7 @@ class BaseballTOJ(klibs.Experiment):
 					mask_offset = [0, -15]	# y is constant, just aligns center of glove to center of ball
 					mask_offset[0] = (self.ball_vanish_line - self.ball_x) - 50
 					ball_frame.mask(self.glove_mask, mask_offset)
-				blit(ball_frame, position=(self.ball_x, self.ball_y))
+				blit(ball_frame, location=(self.ball_x, self.ball_y))
 				ball_frames_shown += 1
 
 			if frame in self.probe_frames and probe_condition != TOJ:
@@ -410,12 +412,12 @@ class BaseballTOJ(klibs.Experiment):
 
 	def get_color_response(self):
 		clear()
-		# sdl2.mouse.SDL_WarpMouseGlobal(P.screen_c[0], P.screen_c[1])
+		sdl2.mouse.SDL_WarpMouseGlobal(P.screen_c[0], P.screen_c[1])
 		sdl2.mouse.SDL_ShowCursor(sdl2.SDL_ENABLE)
 		sdl2.SDL_PumpEvents()
 		start = time.time()
 		fill()
-		message(self.strings['choose_color'], registration=5, location=P.screen_c)
+		message(self.strings['choose_color'], registration=7, location=(0,0))
 		blit(self.wheel, 5, P.screen_c)
 		flip()
 		while self.color_response == NA:
@@ -494,7 +496,7 @@ class BaseballTOJ(klibs.Experiment):
 						if not response:
 							key = event.key
 							sdl_keysym = key.keysym.sym
-							ui_request(sdl_keysym)
+							ui_request(key.keysym)
 							key_name = sdl2.keyboard.SDL_GetKeyName(sdl_keysym)
 							if key_map is not None:
 								valid = key_map.validate(sdl_keysym)

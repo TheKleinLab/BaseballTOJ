@@ -141,5 +141,46 @@
             "active": true
         }
     ],
-    "experimental": null
+    "experimental": [
+		{
+			"index": 0,
+			"title": "tie_run_familiar",
+			"database_field": null,
+			"query": "Are you familiar with the baseball convention that states 'a tie goes to the runner'?",
+			"accepted": ["y", "n"],
+			"allow_null": false,
+			"format": {
+				"type": "str",
+                "styles": "default",
+                "positions": "default",
+				"password": false,
+				"range": null,
+				"case_sensitive": true,
+				"accept_as_true": null,
+				"action": null
+			},
+			"anonymous_value": null,
+			"active": true
+		},
+		{
+			"index": 1,
+			"title": "tie_run_used",
+			"database_field": null,
+			"query": "Did you use this convention in make 'safe' or 'out' judgements during this experiment?",
+			"accepted": ["y", "n"],
+			"allow_null": false,
+			"format": {
+				"type": "str",
+                "styles": "default",
+                "positions": "default",
+				"password": false,
+				"range": null,
+				"case_sensitive": true,
+				"accept_as_true": null,
+				"action": null
+			},
+			"anonymous_value": null,
+			"active": true
+        }
+    ]
 }
