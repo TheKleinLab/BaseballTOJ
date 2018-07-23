@@ -339,17 +339,18 @@ class BaseballTOJ(klibs.Experiment):
 		self.toj_response = NA
 
 	def clean_up(self):
-		self.db.init_entry("surveys", set_current=True)
-		self.db.log('participant_id', P.participant_id)
-		
-		tie_run_familiar_resp = user_queries.experimental[0]
-		self.db.log('tie_run_familiar', tie_run_familiar_resp)
-		
-		if tie_run_familiar_resp == "y":
-			self.db.log('tie_run_used', user_queries.experimental[1])
+		tie_run_familiar = user_queries.experimental[0]
+		if tie_run_familiar == "y":
+			tie_run_used = user_queries.experimental[1]
 		else:
-			self.db.log('tie_run_used', NA)
-		self.db.insert()
+			tie_run_used = 'NA'
+
+		tie_run_survey = {
+			'participant_id': P.participant_id,
+			'tie_run_familiar': tie_run_familiar,
+			'tie_run_used': tie_run_used
+		}
+		self.db.insert(tie_run_survey, table='surveys')
 
 
 	def play_video(self, soa, first_arrival, probe_condition, probe_location):
