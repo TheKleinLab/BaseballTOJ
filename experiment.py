@@ -14,7 +14,7 @@ from klibs.KLGraphics import fill, blit, flip, clear
 from klibs.KLGraphics.colorspaces import const_lum
 from klibs.KLGraphics.KLNumpySurface import NumpySurface
 import klibs.KLGraphics.KLDraw as kld
-from klibs.KLCommunication import message, user_queries
+from klibs.KLCommunication import message, user_queries, query
 
 # Import additional required libraries
 
@@ -339,9 +339,9 @@ class BaseballTOJ(klibs.Experiment):
 		self.toj_response = NA
 
 	def clean_up(self):
-		tie_run_familiar = user_queries.experimental[0]
+		tie_run_familiar = query(user_queries.experimental[0])
 		if tie_run_familiar == "y":
-			tie_run_used = user_queries.experimental[1]
+			tie_run_used = query(user_queries.experimental[1])
 		else:
 			tie_run_used = 'NA'
 
