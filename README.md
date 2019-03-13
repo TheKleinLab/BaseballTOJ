@@ -20,15 +20,17 @@ First, you will need to install the KLibs framework by following the instruction
 
 Then, you can then download and install the experiment program with the following commands (replacing `~/Downloads` with the path to the folder where you would like to put the program folder):
 
-```
+```bash
 cd ~/Downloads
 git clone --depth 1 https://github.com/TheKleinLab/BaseballTOJ.git
 ```
-You will also need to install the [imageio](https://imageio.github.io) module, which you can do by running:
+
+You will also need to install the [imageio](https://imageio.github.io) module and its ffmpeg component, which you can do by running:
 
 ```
-pip2.7 install imageio
+pip install imageio imageio-ffmpeg
 ```
+
 If using default system Python on macOS, you will need to preface the above command with `sudo -H ` for it to work.
 
 ### Running the Experiment
@@ -50,5 +52,5 @@ To export data from BaseballTOJ, simply run
 ```
 klibs export -join surveys
 ```
-while in the BaseballTOJ directory. This will export the trial data for each participant into individual tab-separated text files in the project's `ExpAssets/Data` subfolder.
 
+while in the BaseballTOJ directory. This will export the trial data for each participant into individual tab-separated text files in the project's `ExpAssets/Data` subfolder.

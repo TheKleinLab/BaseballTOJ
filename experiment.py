@@ -136,7 +136,7 @@ class BaseballTOJ(klibs.Experiment):
 		flip()
 		
 		clip = imageio.get_reader(scene_mov_path, 'ffmpeg') # load in baseball clip 
-		framecount = clip.get_length()
+		framecount = clip.count_frames()
 		
 		self.scene_frames = []
 		for index in range(first_frame, framecount, 2):
